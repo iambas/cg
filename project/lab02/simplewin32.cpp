@@ -205,8 +205,8 @@ void mouse_update (float cx, float cy)
 	else
 	{
 		m_zdist += (cy - m_py)*0.01f;
-		if (m_zdist > 0) m_zdist = 0;
-		if (m_zdist < -17) m_zdist = -17;
+		if (m_zdist > 0) m_zdist = 0;	// max zoom in
+		if (m_zdist < -17) m_zdist = -17;   // max zoom out
 	}
 
     m_px = cx;
@@ -296,7 +296,7 @@ void draw(GLuint texture, float radius)
 		glRotatef(ae++, 1.0f, 1.0f, 1.0f);
 	}
 	else if (texture == moon) {
-		glRotatef(am+=1, 1.0f, 1.0f, 1.0f);
+		glRotatef(am+=0.5, 1.0f, 1.0f, 1.0f);
 	}
 	gluSphere(qobj, radius, 100, 100);
 	glPopMatrix();
